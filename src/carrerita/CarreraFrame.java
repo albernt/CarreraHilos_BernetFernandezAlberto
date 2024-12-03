@@ -115,5 +115,24 @@ public class CarreraFrame extends JFrame {
         repaint(); // Actualizar el panel para mostrar los cambios
     }
 
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Llamada a la superclase paintComponent de Jpanel ya existente en javax.swing y como parametro se le pasa "g", el objeto de la clase Graphics de java.awt que le pasamos por parametro a la declaración del método
+        Graphics2D g2d = (Graphics2D) g; // Casteamos el objeto Graphics a Graphics2D, la cual es una subclase de Graphics
+        g2d.setStroke(new BasicStroke(3)); // Configuramos el grosor del ratro con setStroke
+
+        for (int i = 0; i < trails.size(); i++) { // Iteramos sobre las listas de rastro y color de rastro de cada coche
+            List<Point> trail = trails.get(i);
+            List<Color> colors = trailColors.get(i);
+
+            for (int j = 1; j < trail.size(); j++) { // Iteramos sobre cada uno de los puntos e cada rastro
+                Point p1 = trail.get(j - 1); // Guardamos un punto
+                Point p2 = trail.get(j); // Guardamos el punto anterior
+                g2d.setColor(colors.get(j)); // Usar el color correspondiente a cada segmento
+                g2d.drawLine(p1.x, p1.y, p2.x, p2.y); // Dibujar la línea del rastro dibujando una linea entre cada punto
+            }
+        }
+    }
+}
+
 
 }
