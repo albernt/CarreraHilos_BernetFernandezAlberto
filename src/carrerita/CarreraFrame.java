@@ -134,5 +134,21 @@ public class CarreraFrame extends JFrame {
     }
 }
 
+static class Car implements Runnable {
+    private String name; // Nombre del coche
+    private JLabel carLabel; // Etiqueta gráfica del coche
+    private int circuitLength; // Longitud total de la pista
+    private AtomicInteger distance = new AtomicInteger(0); // Control de distancia con acceso seguro desde múltiples hilos
+    private RacePanel racePanel; // Panel para dibujar el rastro del coche
+    private int yPosition; // Posición vertical del coche
+
+    public Car(String name, JLabel carLabel, int circuitLength, RacePanel racePanel, int yPosition) {
+        this.name = name;
+        this.carLabel = carLabel;
+        this.circuitLength = circuitLength;
+        this.racePanel = racePanel;
+        this.yPosition = yPosition;
+    }
+
 
 }
