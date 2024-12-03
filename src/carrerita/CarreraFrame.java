@@ -88,5 +88,15 @@ public class CarreraFrame extends JFrame {
         return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)); // Redimensionar la imagen
     }
 
+    public static synchronized void reportDistances(String carName, int distance) {
+        distances.put(carName, distance); // Guardar distancia
+
+        if (distances.size() == 4) { // Cuando todos los coches han registrado su distancia
+            StringBuilder result = new StringBuilder("Distancias finales:\n");
+            distances.forEach((name, dist) -> result.append(name).append(": ").append(dist).append(" metros\n"));
+            JOptionPane.showMessageDialog(null, result.toString());
+        }
+    }
+
 
 }
