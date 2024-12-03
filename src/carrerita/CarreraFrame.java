@@ -19,4 +19,13 @@ public class CarreraFrame extends JFrame {
     private static final int GAP = 80; // Espacio vertical entre coches
     private static final int MARGIN = 50; // Espacio adicional alrededor de la ventana
 
+    // Componentes para la interfaz gráfica
+    private JLabel car1Label;
+    private JLabel car2Label;
+    private JLabel car3Label;
+    private JLabel car4Label;
+
+    private RacePanel racePanel; // Panel personalizado para mostrar los rastros de los coches
+    private JLabel backgroundLabel; // Fondo de la ventana
+
 }
