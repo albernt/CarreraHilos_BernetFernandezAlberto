@@ -82,4 +82,11 @@ public class CarreraFrame extends JFrame {
         new Thread(car4).start();
     }
 
+    // Método para cargar una imagen desde el archivo especificado y redimensionarla
+    private ImageIcon loadImage(String path, int width, int height) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(path)); // Cargar la imagen desde el recurso
+        return new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)); // Redimensionar la imagen
+    }
+
+
 }
