@@ -98,5 +98,22 @@ public class CarreraFrame extends JFrame {
         }
     }
 
+    // Método que agregará un punto por cada posición recorrida por cada coche, pilla por parametro el indice del coche y las coordenadas
+    public void addTrail(int carIndex, int x, int y) {
+        List<Point> trail = trails.get(carIndex);
+        List<Color> colors = trailColors.get(carIndex);
+
+        trail.add(new Point(x, y)); // Agregamos un nuevo punto al rastro
+        float hue = (float) Math.random(); // Generar un color aleatorio
+        colors.add(Color.getHSBColor(hue, 1.0f, 1.0f)); // Aquí se lo asignamos a un punto
+
+        if (trail.size() > 100) { // Limitamos el tamaño del rastro eliminando los puntos antiguos
+            trail.remove(0);
+            colors.remove(0);
+        }
+
+        repaint(); // Actualizar el panel para mostrar los cambios
+    }
+
 
 }
